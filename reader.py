@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+#import libs
 import os, sys
 import numpy as np
 import cv2 as cv
@@ -9,12 +10,15 @@ from tkinter import *
 from numpy.lib.arraypad import pad
 import easygui
 
+# initiating graphical user interfaces
+
 top = tk.Tk()
 top.geometry('500x500')
-top.title('Qr Code Reader ')
+top.title(' Qr Code Reader ')
 top.configure(background='white')
 label= Label(top, background="#CDCDCD", font=('calibri', 20,'bold'))
 
+#live capturing 
 def liveCapture():
      cap = cv.VideoCapture(0)
      cv.namedWindow("Live Capture")
@@ -44,16 +48,23 @@ def liveCapture():
 
      cap.release()
 
+# close function
+
 def Close():
      cv.waitKey(0)
      cv.destroyAllWindows()
      cv.waitKey(1)
-     
 
+
+# buttons  
 detection = tk.Button(top, text="Live Capture", command=liveCapture,padx=10,pady=5)
 detection.configure(background='#364156',foreground='white',font=('calibri',10,'bold'))
 detection.pack(side=TOP,pady=50)
 close = tk.Button(top, text="Exit/Close",command=Close, padx=10, pady=5 )
 close.configure(background='#364156', foreground='white', font=('calibri',10,'bold'))
 close.pack(side=BOTTOM,pady=50)
+
+
+cv.waitKey(0)
+cv.destroyAllWindows()
 top.mainloop()
